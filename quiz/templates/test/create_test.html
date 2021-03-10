@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block banner %}
+    <div>
+        <img src="{% static 'img/baner.png' %}">
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    <div class="btn-group">
+         <form method='post'>
+            {% csrf_token %}
+             Выберите необходимый язык программирования:
+             {{ form.language }}
+             <input type="submit" class="btn btn-default" value="Начать тест">
+         </form>
+    </div>
+{% endblock %}

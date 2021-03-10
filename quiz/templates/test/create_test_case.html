@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block content %}
+    <div class="btn-group">
+       <form method="post">
+             {% csrf_token %}
+             {{ question.text }}
+             {% if question.type == 'standard' %}
+             <ul name="selected">
+                 {% if count_of_answers == 1 %}
+                     {% for answer in answers%}
+                     <input type="radio" value="{{answer.pk}}">
+                         {{answer.text}}
+                     </input>
+                     {% endfor %}
+                 {% else %}
+                    {% for answer in answers %}
+                     <input type="checkbox">
+                         {{answer.text}}
+                     </input>
+                     {% endfor %}
+                 {% endif %}
+             </ul>
+             {% else %}
+                {{ form.free_text}}
+             {% endif %}
+             {% if not is_last_question1 %}
+             <input type="submit" class="btn btn-default" value="Ответить">
+             {% endif %}
+             <a  href="{% url 'test:show_result' test_id %}">Завершить тест</a>
+         </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,57 @@
+{% load static %}
+{% load common_tags %}
+
+<html lang="en">
+<head>
+    {% load bootstrap3 %}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <script src="{% bootstrap_jquery_url %}"></script>
+    {% bootstrap_javascript %}
+</head>
+
+<body>
+    <div class="wrap">
+        <nav class="navbar navbar-default">
+            <div class="navbar-brand">Система тестирования</div>
+            <div class="container">
+                {% if user.is_authenticated %}
+                    <div class="nav navbar-nav navbar-right">
+                            <a href="" >{% get_name_or_email user %}, личный кабинет</a>
+                            <br>
+                             <a href="{% url 'auth_logout' %}">Выход</a>
+                    </div>
+                {% else %}
+                    <div class="nav navbar-nav navbar-right">
+                        <a  href="{% url 'auth_login' %}">Вход в личный кабинет</a>
+                    </div>
+                {% endif %}
+            </div>
+        </nav>
+    </div>
+
+    <div class="content">
+
+    {% block banner %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    </div>
+
+
+    <div class="footer navbar-fixed-bottom">
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <div class="col-md-8">
+                    <span class="footer__copyright">© 2018 </span>
+                </div>
+                <div class="col-md-4">
+                    <div></div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</body>
+</html>

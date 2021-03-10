@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block content %}
+<div>
+    <label class="label label-default"> Пользователь: </label>
+    {{test.user}}
+</div>
+<div>
+    <label class="label label-default"> Язык программирования: </label>
+    {{test.language}}
+</div>
+<div>
+    <label class="label label-default"> Всего вопросов:</label>
+    {{test.count_of_questions}}
+</div>
+<div>
+    <label class="label label-default"> Правильно отвеченных вопросов:</label>
+    {{test.correct_answers}}
+</div>
+    {% for test_case in test_case_list.all  %}
+fasd
+    c
+    <!--{{test_case.question}}-->
+    <!--<label> Выбранный ответ: </label>label>-->
+
+    {% endfor %}
+{% endblock %}
